@@ -6,9 +6,9 @@ public class Main{
     public static void main(String[] args) {
 
     Contact[] contacts = new Contact[] {
-            new Contact("James", "12344455"),
-            new Contact("Carl", "555555555"),
-            new Contact("Sophie", "3333333333"),
+            new Contact("James Smith", "1111111111"),
+            new Contact("Carl Peterson", "22222222222"),
+            new Contact("Sophie Rodger", "33333333333"),
         };
 
         for (Contact contact : contacts) {
@@ -19,6 +19,7 @@ public class Main{
         System.out.println("----------PHONE BOOK---------");
         System.out.println("1. Open the book");
         System.out.println("2. Close the book");
+        System.out.println("What do you want to do? Choose 1 or 2: ");
         int choice = input.nextInt();
 
         while(choice==1){
@@ -31,30 +32,46 @@ public class Main{
         int answer = input.nextInt();
            switch(answer) {
                 case 1:
-                    System.out.println("Type name: ");
-                    String nameAdd = input.nextLine();
                     input.nextLine();
-                    System.out.println("Type phone number: ");
+                    System.out.print("Type name: ");
+                    String nameAdd = input.nextLine();
+                    System.out.print("Type phone number: ");
                     String phoneAdd = input.nextLine();
-                    
-                    System.out.println("----->Added a new contact into");
-                    System.out.println("-----------------");
+                    Contact contactAdd = new Contact(nameAdd, phoneAdd);
+                    phonebook.addEntry(contactAdd);
+                    System.out.println("-----Added a new contact into-----");
+                    System.out.println("----->Click to continue...");
+                    input.nextLine();
                     break;
                 case 2:
                     System.out.println("All contacts in your phone book: ");
                     System.out.println(phonebook);
+                    System.out.println("-----");
                     break;
                 case 3:
                     System.out.println("Type index of the entry: ");
-                    int idx = input.nextInt();
-                    Contact contact = phonebook.getEntry(idx);
-                    System.out.println("Set a new phone number for " + contact.getName() + ": ");
+                    int idxEdit = input.nextInt();
+                    Contact contactEdit = phonebook.getEntry(idxEdit);
+                    input.nextLine();
+                    System.out.println("Set a new phone number for " + contactEdit.getName() + ": ");
                     String updatedNumber = input.nextLine();
-                    contact.setNumber(updatedNumber);
+                    contactEdit.setNumber(updatedNumber);
+                    phonebook.setEntry(idxEdit, contactEdit);
+                    System.out.println("-----Updated the contact into-----");
+                    System.out.println("----->Click to continue...");
+                    input.nextLine();
                     break;
                 case 4:
+                    System.out.println("Type index of the entry to delete it: ");
+                    int idxDelete = input.nextInt();
+                    input.nextLine();
+                    phonebook.deleteEntry(idxDelete);
+                    System.out.println("-----Deleted the contact into-----");
+                    System.out.println("----->Click to continue...");
+                    input.nextLine();
                     break;
                  case 5:
+                    System.exit(0);
                     break;
                  }
                     

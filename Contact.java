@@ -36,4 +36,9 @@ public class Contact {
         
     }
 
+    public void addEntry(String name, String number){
+        this.name = name;
+        this.number = number;
+    }
+
 }

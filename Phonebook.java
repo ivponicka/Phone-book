@@ -21,9 +21,13 @@ public class Phonebook {
         this.contacts.add(new Contact(contact));
     }
 
+    public void deleteEntry(int index){
+        this.contacts.remove(index);
+    }
+
    public String toString() {
         String temp = "";
-        int i = 1;
+        int i = 0;
         for (Contact contact : contacts) {
             temp += "-------- " + i + " -------- \n" + contact.toString() + "\n" ;
             i++;
